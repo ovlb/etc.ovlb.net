@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  -
+    var posts = {
+    posts: [
+      {
+        "slug": "trustbelievechange",
+        "title": "Trustbelievechange",
+        "abstract": "Drei Voraussetzungen und ihre Vertiefungen.",
+        "type": "Promotext",
+        "date": "Dezember 2015"
+      },
+      {
+        "slug": "musikpostulat",
+        "title": "Postulat über die Traurigkeit in der Musik",
+        "abstract": "Was ist eigentlich traurige Musik und wenn sie ist, gibt es sie auch?",
+        "type": "Kulturtheorie",
+        "date": "Oktober 2015"
+      },
+      {
+        'slug': 'rauschen',
+        'title': 'Rauschen – ein Gedankenstrom',
+        'abstract': 'Betrachtungen einer Neubausiedlung am frühen Abend.',
+        'type': 'Essay',
+        'date': 'September 2015'
+      },
+      {
+        'slug': 'prueflingsmemoiren',
+        'title': 'Memoiren eines Prüflings',
+        'abstract': 'Wie man eine Abschlussprüfung übersteht oder dabei wenigstens nicht komplett den Verstand verliert.',
+        'type': 'Essay',
+        'date': 'Mai 2015'
+      }
+      ]};
+
+  main.o-main-content.o-archive
+    each post in posts.posts
+      article.o-card.a--above__parent
+        a(class="a--above" href=post.slug)
+        header.c-card__header
+          h1.c-sub-headline.c-card__headline= post.title
+        p.c-card__abstract= post.abstract
+        footer.c-card__footer
+          p.p--small.c-card__meta #{post.type}—#{post.date}

@@ -1,0 +1,17 @@
+.c-slide__slide {
+    padding: $spacer;
+    @media (min-width: breakpoint(xlarge)) {
+        display: inline-block;
+        float: left;
+        width: 50%;
+    }
+}
+
+.c-slide__notes {
+    padding: $spacer;
+    @media (min-width: breakpoint(xlarge)) {
+        display: inline-block;
+        float: right;
+        width: 50%;
+    }
+}

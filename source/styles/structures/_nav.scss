@@ -1,0 +1,32 @@
+.o-nav__list {
+    margin-bottom: 0;
+    list-style-type: none; 
+    padding-left: 0;
+}
+
+.nav__list-item {
+    text-transform: lowercase;
+    display: inline-block;
+    float: left;
+    font-size: font-size(small);
+    padding: 0 .5*$spacer;
+        
+    &:first-of-type {
+        padding-left: 0;
+    }
+    
+    @media (min-width: breakpoint(xxlarge)) {
+        margin-bottom: .5*$spacer;
+    }
+}
+
+.nav__link {
+    color: $main;
+    text-decoration: none;
+
+    &:hover, &--active {
+        border-bottom: 2px solid $red;
+        padding-bottom: 5px;
+        margin-bottom: -7px;
+    }
+}

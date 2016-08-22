@@ -1,0 +1,9 @@
+.o-main-header {
+    box-shadow: map-get($box-shadow,lvl1);
+    margin-bottom: $spacer;
+    padding: .5*$spacer;
+
+    @media(min-width: breakpoint(medium)) {
+        padding-left: 1.5*$spacer;
+    }
+}
