@@ -1,0 +1,24 @@
+.c-artikel-footer {
+    font-family: $font--secondary;
+    margin-top: 2*$spacer;
+    
+    &__meta {
+        font-size: font-size(small);
+        margin-bottom: .5*$spacer;
+        text-indent: 0;
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media(min-width: breakpoint(medium)) {
+            display: inline-block;
+            font-size: font-size(base);
+            padding-right: 1.5*$spacer;
+            
+            &:last-child {
+                padding-right: 0;
+            }
+        }  
+    }
+}

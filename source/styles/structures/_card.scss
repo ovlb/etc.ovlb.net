@@ -1,0 +1,78 @@
+.o-card {
+    align-items: stretch;
+    border-top: 2px solid $red;
+    display: flex;
+    flex: 0 1 23rem;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    padding: .25*$spacer;
+    position: relative;
+    transition: box-shadow .3s cubic-bezier(0,.2,.3,1);
+
+    @media(min-width: breakpoint(medium)) {
+        padding: $spacer;
+    }
+
+    @media(min-width: breakpoint(large)) {
+        margin-left: $spacer;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: $spacer;
+    }
+
+    &::before, &::after {
+        background: $red;
+        content: '';
+        display: block;
+        left: 0;
+        position: absolute;
+        transition: transform .3s cubic-bezier(0,.2,.3,1);
+        width: 100%;
+    }
+
+    &::before {
+        height: 3px;
+        top: 0;
+        transform: scale(1,0);
+        transform-origin: top center;
+    }
+
+    &::after {
+        bottom: 0;
+        height: 2px;
+        transform: scale(.25,.5);
+        transform-origin: right bottom;
+    }
+
+    &:hover {
+        box-shadow: map-get($box-shadow,lvl1);
+
+        &::after, &::before {
+            transform: scale(1,1);
+        }
+    }
+}
+
+.c-card__header {
+    margin-bottom: .5*$spacer;
+    width: 100%;
+    z-index: 10;
+}
+
+.c-card__headline {
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: none;
+    word-spacing: 1px;
+    width: 100%;
+}
+
+.c-card__footer {
+    margin: .25*$spacer 0;
+    padding-top: .125*$spacer;
+}
+
+.c-card__meta {
+    color: rgba($main, .6);
+}

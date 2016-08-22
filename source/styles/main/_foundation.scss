@@ -1,0 +1,67 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/* Clearfix */
+.group {
+    *zoom: 1;
+}
+.group:before, .group:after {
+    content: " ";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+}
+
+html {
+    font-family: $font--main;
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures contextual;
+    -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+    -ms-font-feature-settings: "kern", "liga", "clig", "alt";
+    -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+    font-feature-settings: "kern", "liga", "clig", "calt";
+    font-size: 100%;
+
+
+    @media (min-width: breakpoint(large)) {
+        font-size: 115%;
+    }
+}
+
+body {
+    background-color: $background;
+    color: $main;
+}
+
+.site-container {
+    padding: $spacer;
+    
+    @media (min-width: breakpoint(large)) {
+        margin: 0 auto;
+        width: 95%;
+    }
+
+    @media (min-width: breakpoint(xlarge)) {
+        padding: 2*$spacer 0;
+        width: 65%;
+    }
+    
+    @media(min-width: 57.375rem) {
+        width: 60%;
+    }
+    
+    @media (min-width: 72.5rem) {
+        width: 50%;
+    }
+}
+
+.u-float--left {
+    float: left;
+}
+
+.u-float--right {
+    float: right;
+}

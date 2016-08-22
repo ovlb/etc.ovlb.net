@@ -1,0 +1,24 @@
+blockquote {
+    border-left: $black-border--small;
+    margin: 2*$spacer 0;
+    padding-left: $spacer;
+    
+    @media(min-width: breakpoint(medium)) {
+        padding: 0 2*$spacer;
+    }
+    
+    & + p {
+        text-indent: 0;
+    }
+}
+
+.c-blockquote__source {
+    display: block;
+    font-style: normal;
+    letter-spacing: .35px;
+    margin-top: $spacer;
+    
+    & p {
+        text-indent: 0;
+    }
+}

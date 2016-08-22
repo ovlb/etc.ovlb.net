@@ -1,0 +1,11 @@
+.list {
+    line-height: 1.6;
+
+    @media (min-width: breakpoint(xlarge)) {
+        margin-left: -1.5*$spacer;
+
+        li {
+            padding-left: .5*$spacer;
+        }
+    }
+}

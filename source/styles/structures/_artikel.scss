@@ -1,0 +1,19 @@
+.o-article-header {
+    border-left: 2px solid $red;
+    margin: 0 auto;
+    max-width: 40rem;
+    padding: $spacer .5*$spacer;
+    text-align: center;
+}
+
+.c-article-header__meta {
+    color: rgba($main, .7);
+    margin: $spacer 0;
+}
+
+.o-article {
+    border-bottom: 2px solid $red;
+    margin: 0 auto $spacer;
+    max-width: 40rem;
+    padding: $spacer .5*$spacer;
+}

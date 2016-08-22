@@ -1,0 +1,17 @@
+@function breakpoint($key) {
+  @if map-has-key($breakpoints, $key) {
+    @return map-get($breakpoints, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $breakpoints.";
+  @return null;
+}
+
+@function font-size($key) {
+  @if map-has-key($font-size, $key) {
+    @return map-get($font-size, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $font-size.";
+  @return null;
+}

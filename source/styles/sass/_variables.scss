@@ -1,0 +1,43 @@
+// Colors
+$main: rgb(14, 14, 14);
+$background: rgb(248, 241, 226);
+
+$red: rgb(176, 0, 0);
+
+// Fonts
+$font--main: "Adagio_Sans", Tahoma, Geneva, sans-serif;
+$font--secondary: "Adagio_Serif", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+$font--code: "Hack", "Lucida Console", Monaco, monospace;
+
+// Font Sizes
+$font-size: (
+    small: .9375rem,
+    base: 1.025rem,
+    medium: 1.125rem,
+    large: 1.25rem
+);
+
+// Shadows
+$box-shadow: (
+    'lvl1': (0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)),
+    'lvl2': (0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23))
+);
+
+//Borders
+$black-border--small: 2px solid $main;
+
+// Modular Scale
+$ms-base: font-size(base);
+$ms-ratio: 1.25;
+
+// Breakpoints
+$breakpoints: (
+    medium: 30rem,
+    large: 39rem,
+    larger: 43.75rem,
+    xlarge: 55.875rem,
+    xxlarge: 75rem
+);
+
+// Spacer
+$spacer: 1.6rem;
