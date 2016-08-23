@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+var env = process.env.NODE_ENV || 'env';
 
 const routes = require('./routes/index');
 
@@ -23,6 +24,14 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', routes);
 
-app.listen(4000, () => {
-  console.log('listening on 4000');
-})
+if(env === 'env') {
+  app.listen(4000, () => {
+    console.log('listening on 4000 in mode ' +  env);
+  });
+} else {
+  // uberspace port
+  app.listen(61097, () => {
+    console.log('listening in mode' + env + ' on port 61097');
+  });
+}
+
