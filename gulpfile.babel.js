@@ -102,7 +102,7 @@ gulp.task('scripts', () =>
 
 
 // Clean output directory
-gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
+gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git', '!dist/fonts'], {dot: true}));
 
 // Watch files for changes & reload
 gulp.task('serve', ['scripts', 'styles', 'copy', 'nodemon'], () => {
