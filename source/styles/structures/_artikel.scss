@@ -14,6 +14,19 @@
 .o-article {
     border-bottom: 2px solid $red;
     margin: 0 auto $spacer;
-    max-width: 40rem;
-    padding: $spacer .5*$spacer;
+    max-width: 50rem;
+    min-width: 20rem;
+    padding: $spacer 4vw;
+
+    @media(min-width: 20rem) {
+        p {
+            line-height: calc(1.4em + (1.65 - 1.4) * ((100vw - 20em) / (50 - 20)));
+        }
+    }
+
+    @media(min-width: 50rem) {
+        p {
+            line-height: 1.65;
+        }
+    }
 }
