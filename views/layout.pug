@@ -2,13 +2,19 @@ doctype html
 html
   head
     title #{title} | etc.ovlb
-    link(rel='stylesheet', href='/styles/main.css')
+
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="description" content="random ramblings")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
 
     meta(property="og:title" content="etc.ovlb")
     meta(property="og:type" content="website")
     meta(property="og:description" content="random ramblings")
     meta(property="og:image" content="https://etc.ovlb.net/img/etc-og-1.png")
     meta(property="og:site_name" content="etc.ovlb")
+
+    link(rel='stylesheet', href='/styles/main.css')
 
   body
     include header
