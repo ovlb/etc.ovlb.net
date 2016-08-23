@@ -2,9 +2,10 @@
     align-items: stretch;
     border-top: 2px solid $red;
     display: flex;
-    flex: 0 1 23rem;
+    flex: 0 1 20rem;
     flex-flow: column nowrap;
     justify-content: space-between;
+    margin-bottom: $spacer;
     padding: .25*$spacer;
     position: relative;
     transition: box-shadow .3s cubic-bezier(0,.2,.3,1);
@@ -15,10 +16,6 @@
 
     @media(min-width: breakpoint(large)) {
         margin-left: $spacer;
-    }
-
-    &:not(:last-child) {
-        margin-bottom: $spacer;
     }
 
     &::before, &::after {
