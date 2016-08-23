@@ -16,21 +16,22 @@ p, .p, .c-sub--headline, li, {
 
 /*
     All headlines are defined with these classes
-    This makes sure that tags are used because of their semantic and classes
-    because of the style
+    This makes sure that tags are used because of their semantics and classes because of the style
 */
 .c-main-headline {
     font-family: $font--main;
     font-size: ms(2, font-size(medium));
-    letter-spacing: .2rem;
+    letter-spacing: .13rem;
     margin-bottom: $spacer;
     margin-top: .5*$spacer;
+    word-spacing: .13rem;
 }
 
 .c-sub-headline {
-    letter-spacing: .2rem;
+    letter-spacing: .125rem;
     margin: 0 0 $spacer 0;
-    text-transform: uppercase;
+    //text-transform: uppercase;
+    word-spacing: .125rem;
 
     &:first-child {
         margin-top: 0;
