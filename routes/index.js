@@ -43,7 +43,6 @@ router.get('/:artikel', (req, res, next) => {
     res.locals.article = parsedText;
     res.locals.text = textContent;
     res.locals.md = md;
-    console.log(res.locals);
     res.render('article');
   })
   .catch(error => {
