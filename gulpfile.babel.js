@@ -164,11 +164,31 @@ gulp.task('serve:dist', ['default'], () =>
   })
 );
 
+
+// Add hashes to cached assets
+gulp.task('revision', () => {
+  return gulp.src(['dist/styles/*.css', 'dist/scripts/*.js'], { base: 'dist/' })
+    .pipe(gulp.dest('dist/'))
+    .pipe($.rev())
+    .pipe(gulp.dest('dist/'))
+    .pipe($.rev.manifest())
+    .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('rev:collect', ['revision'], cb => {
+  return gulp.src(['dist/**/*.json', 'dist/**/*.html', 'views/**/*.pug'], {base: './'})
+    .pipe($.revCollector({
+      replaceReved: true
+    }))
+    .pipe(gulp.dest('./'));
+});
+
 // Build production files, the default task
 gulp.task('default', ['clean'], cb =>
   runSequence(
     'styles',
     ['lint', 'scripts', 'images', 'copy'],
+    'rev:collect',
     cb
   )
 );
