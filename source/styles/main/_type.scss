@@ -21,17 +21,16 @@ p, .p, .c-sub--headline, li, {
 .c-main-headline {
     font-family: $font--main;
     font-size: ms(2, font-size(medium));
-    letter-spacing: .13rem;
+    letter-spacing: .1rem;
     margin-bottom: $spacer;
     margin-top: .5*$spacer;
-    word-spacing: .13rem;
+    word-spacing: .1rem;
 }
 
 .c-sub-headline {
-    letter-spacing: .125rem;
+    letter-spacing: 1px;
     margin: 0 0 $spacer 0;
-    //text-transform: uppercase;
-    word-spacing: .125rem;
+    word-spacing: 1px;
 
     &:first-child {
         margin-top: 0;
@@ -66,10 +65,10 @@ p {
 
 .p--intro, .o-article p:first-of-type {
     font-family: $font--secondary;
-    padding: $spacer 2*$spacer;
+    padding: $spacer .5*$spacer;
     text-indent: 0;
 
-    @media(min-width: breakpoint(xxlarge)) {
+    @media(min-width: map-get($breakpoints, large)) {
         line-height: 1.7;
         padding: $spacer 4*$spacer;
     }
@@ -83,7 +82,13 @@ p {
         font-size: 200%;
         font-weight: bold;
         margin-bottom: -.5*$spacer;
-        padding: 0 .5*$spacer 0 .5*$spacer;
+        padding: .5*$spacer;
+    }
+
+    @media(min-width: map-get($breakpoints, medium)) {
+        &:first-letter {
+            padding: 0 .5*$spacer;
+        }
     }
 }
 
