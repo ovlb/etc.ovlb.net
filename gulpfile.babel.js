@@ -121,8 +121,8 @@ gulp.task('serve', ['scripts', 'styles', 'copy', 'nodemon'], () => {
   gulp.watch([source + '/**/*.html'], reload);
   gulp.watch(['views/**/*.pug'], reload);
   gulp.watch([source + '/**/*.md'], ['copy', reload]);
-  gulp.watch([source + '/styles/**/*.{scss,css}'], ['styles', 'copy', 'rev:collect', reload]);
-  gulp.watch([source + '/scripts/**/*.js'], ['lint', 'scripts', 'rev:collect', reload]);
+  gulp.watch([source + '/styles/**/*.{scss,css}'], ['styles', 'copy', reload]);
+  gulp.watch([source + '/scripts/**/*.js'], ['lint', 'scripts', reload]);
   gulp.watch([source + '/images/**/*'], reload);
 });
 
