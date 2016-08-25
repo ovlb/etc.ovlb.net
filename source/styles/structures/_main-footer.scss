@@ -13,15 +13,17 @@
     align-items: center;
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
     width: 100%;
-    & svg {
-        width: 30px;
-    }
 
     &__autor {
         margin-bottom: 0;
         margin-right: $spacer;
     }
+}
+
+.github-mark {
+    width: 1.5rem;
 }
 
 .github-mark__path {
