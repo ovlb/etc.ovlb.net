@@ -1,3 +1,7 @@
-.o-logo-etc__image {
-    max-width: 8rem;
+.o-logo-etc {
+    left: .75*$spacer;
+    height: 1.6857rem;
+    position: absolute;
+    transition: transform .2s cubic-bezier(0,.1,.3,1);
+    width: 8rem;
 }
