@@ -34,11 +34,12 @@ html {
 body {
     background-color: $background;
     color: $main;
+    padding-top: 7rem;
 }
 
 .site-container {
     padding: $spacer;
-    
+
     @media (min-width: breakpoint(large)) {
         margin: 0 auto;
         width: 95%;
@@ -48,11 +49,11 @@ body {
         padding: 2*$spacer 0;
         width: 65%;
     }
-    
+
     @media(min-width: 57.375rem) {
         width: 60%;
     }
-    
+
     @media (min-width: 72.5rem) {
         width: 50%;
     }
