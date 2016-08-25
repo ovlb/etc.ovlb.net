@@ -1,6 +1,35 @@
 .main-footer {
-    display: block;
-    margin-bottom: 2*$spacer;
+    border-top: 1px solid rgba($main, .3);
     margin-top: 2*$spacer;
+    padding: .5*$spacer .75*$spacer;
     width: 100%;
+
+    @media(min-width: breakpoint(medium)) {
+        padding-left: 1.5*$spacer;
+    }
+}
+
+.meta {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    & svg {
+        width: 30px;
+    }
+
+    &__autor {
+        margin-bottom: 0;
+        margin-right: $spacer;
+    }
+}
+
+.github-mark__path {
+    fill: $main;
+    fill-rule: evenodd;
+    transition: fill .2s cubic-bezier(0,.1,.3,1);
+
+    .github-mark:hover & {
+        fill: $red;
+    }
 }
