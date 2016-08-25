@@ -106,7 +106,8 @@ a[href]:not([class]) {
 
     &::after {
         background-color: $red;
-        content: " ";
+        border-radius: 2px;
+        content: "";
         bottom: 0;
         height: 100%;
         left: -.15rem;
