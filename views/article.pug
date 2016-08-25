@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  header.o-article-header
-    p.c-card__meta.p--small #{article.type}—#{article.date}
-    h1.c-main-headline #{article.title}
-    if article.subtitle
-      h2.c-sub-headline #{article.subtitle}
-  section.o-main-content.o-article
-    != md.parse(text)
+  main.o-main-content.js-main-content
+    header.o-article-header
+      p.c-card__meta.p--small #{article.type}—#{article.date}
+      h1.c-main-headline #{article.title}
+      if article.subtitle
+        h2.c-sub-headline #{article.subtitle}
+    section.o-article
+      != md.parse(text)
