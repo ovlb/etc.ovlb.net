@@ -1,32 +1,36 @@
- /**
-  * Make an AJAX request
-  *
-  * @param {String} fMethod GET or POST
-  * @param {String} fUrl The URL that will be targeted
-  * @param {Array} fData Data to be sent/requested, in JS. Will be
-  * stringified in the function.
-  * @param {String} fDataType What kind of data we want to be parsed
-  */
-var xmlRequest = function xmlRequest (fMethod, fUrl, fData, fDataType) {
-  var request = new XMLHttpRequest();
-  var method = fMethod || 'GET';
-  var data = JSON.stringify.fData;
-  var dataType = fDataType || 'text/plain';
-  var bustCache = '?' + new Date().getTime();
-  var url = fUrl + bustCache;
 
-  request.open(method, url, true);
-  request.setRequestHeader('Content-Type', dataType);
+/**
+ * Promisfied AJAX request, courtesy of Jake Archibald (http://www.html5rocks.com/en/tutorials/es6/promises/?redirect_from_locale=de#toc-promisifying-xmlhttprequest)
+ *
+ * @param {String} url The url which should be requested
+ */
+function get(url) {
+  // Return a new promise.
+  return new Promise(function(resolve, reject) {
+    // Do the usual XHR stuff
+    var req = new XMLHttpRequest();
+    req.open('GET', url + '?js=true');
 
-  request.onload = function() {
-    if (request.status >= 200 && request.status < 400) {
-      var response = JSON.parse(request.responseText);
-    } else {
-      var response = "Es gab einen Fehler."
+    req.onload = function() {
+      // This is called even on 404 etc
+      // so check the status
+      if (req.status == 200) {
+        // Resolve the promise with the response text
+        resolve(req.response);
+      }
+      else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(req.statusText));
+      }
     };
-    console.log(response);
-  };
-  request.send(fData);
 
-  return response;
-};
+    // Handle network errors
+    req.onerror = function() {
+      reject(Error("Network Error"));
+    };
+
+    // Make the request
+    req.send();
+  });
+}
