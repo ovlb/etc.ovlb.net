@@ -78,9 +78,12 @@ router.get('/:artikel', (req, res, next) => {
     const locals = {
       title: parsedMeta.title,
       article: parsedMeta,
-      text: textContent,
-      md: md
+      text: md.parse(textContent)
     };
+
+    if (req.query.js) {
+      res.render('article-standalone', locals);
+    }
 
     res.render('article', locals);
   })
