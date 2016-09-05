@@ -59,10 +59,10 @@ body {
     }
 }
 
-.u-float--left {
-    float: left;
-}
+.o-main-content {
+    transition: opacity .3s ease-out(0,.1,.2,1);
 
-.u-float--right {
-    float: right;
+    &--hidden {
+        opacity: 0;
+    }
 }
