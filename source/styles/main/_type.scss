@@ -141,8 +141,9 @@ a[href]:not([class]) {
     }
 }
 
- /*
-  *
+ /**
+  * Make a box to a link, while keeping the link element itself out of the
+  * content flow
   */
 .a--above {
     // Let the color change
