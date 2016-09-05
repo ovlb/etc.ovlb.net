@@ -86,6 +86,7 @@ gulp.task('scripts', () =>
       //       to be correctly concatenated
       './' + source + '/scripts/_ajax.js',
       './' + source + '/scripts/_debounce.js',
+      './' + source + '/scripts/_popstate.js',
       './' + source + '/scripts/_header.js'
     ])
       .pipe($.sourcemaps.init())
