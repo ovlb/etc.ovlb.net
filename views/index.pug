@@ -4,9 +4,9 @@ block content
   -
     var posts = artikel;
 
-  main.o-main-content.o-archive.js-main-content
+  main.o-main-content.o-archive.js-main-content.js-is-index
     each post in posts
-      article.o-card.a--above__parent
+      article.o-card.a--above__parent.js-article(data-slug=post.slug)
         a(class="a--above" href=post.slug)
         header.c-card__header
           h1.c-sub-headline.c-card__headline= post.title
