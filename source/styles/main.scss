@@ -11,8 +11,9 @@
             Scott Kellum’s Modular Scale plugin
             (https://github.com/modularscale/modularscale-sass)
         e) SCSS Functions
-        f) Viewport
-        g) Site wide styles
+        f) Animation keyframes
+        g) Viewport
+        h) Site wide styles
  ** 2) Components
         x) Typography
         x) Images
@@ -40,8 +41,9 @@
 @import 'sass/variables'; // c) Variables
 @import 'sass/modular-scale'; // d) Modular Scale
 @import 'sass/functions'; // e) SCSS Functions
-@import 'main/viewport'; // f) Viewport
-@import 'main/foundation'; // g) Site wide styles
+@import 'sass/animation-keyframes'; // e) Keyframes
+@import 'main/viewport'; // g) Viewport
+@import 'main/foundation'; // h) Site wide styles
 
 // 2) Components
 @import 'main/type'; // a) Typography
