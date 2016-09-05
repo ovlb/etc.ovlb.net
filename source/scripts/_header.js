@@ -1,6 +1,3 @@
-const headerEl = document.querySelector('.js-main-header');
-const contentEl = document.querySelector('.js-main-content');
-
 var activateEventListeners = () => {
   document.addEventListener('scroll', debounceChangeHeader);
 };
@@ -28,6 +25,5 @@ var debounceChangeHeader =  debounce(function(){
 }, 40);
 
 (() => {
-  console.log('lol');
   activateEventListeners();
 })();
