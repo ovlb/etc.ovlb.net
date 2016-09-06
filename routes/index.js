@@ -82,7 +82,7 @@ router.get('/:artikel', (req, res, next) => {
     };
 
     if (req.query.js) {
-      res.render('article-standalone', locals);
+      res.send(locals);
     }
 
     res.render('article', locals);
