@@ -16,7 +16,6 @@ if ( contentEl.classList.contains(articleClass) ) {
       // AJAX request to get the article data
       get(slug).then( (response) => {
         const data = JSON.parse(response);
-        console.log(response);
         history.pushState(data, null, slug);
         renderArticle(data);
         contentEl.classList.remove(indexClass);
@@ -36,8 +35,8 @@ var renderArticle = (data) => {
   newArticleHeaderEl.classList.add('o-article-header');
   let newArticleMetaEl = document.createElement('p');
 
-  let articleType = data.type;
-  let articleDate = data.date;
+  let articleType = data.article.type;
+  let articleDate = data.article.date;
   let articleMeta = document.createTextNode(articleType + '—' + articleDate);
   newArticleMetaEl.classList.add('c-card__meta', 'p--small');
   newArticleMetaEl.appendChild(articleMeta);
@@ -45,14 +44,14 @@ var renderArticle = (data) => {
 
   let newArticleHeadingEl = document.createElement('h1');
   newArticleHeadingEl.classList.add('c-main-headline');
-  let newArticleHeading = document.createTextNode(data.title);
+  let newArticleHeading = document.createTextNode(data.article.title);
   newArticleHeadingEl.appendChild(newArticleHeading);
   newArticleHeaderEl.appendChild(newArticleHeadingEl);
 
-  if(data.subtitle) {
+  if(data.article.subtitle) {
     let newArticleSubHeadingEl = document.createElement('h2');
     newArticleSubHeadingEl.classList.add('c-sub-headline');
-    let newArticleSubHeading = document.createTextNode(data.subtitle);
+    let newArticleSubHeading = document.createTextNode(data.article.subtitle);
     newArticleSubHeadingEl.appendChild(newArticleSubHeading);
     newArticleHeaderEl.appendChild(newArticleSubHeadingEl);
   }
