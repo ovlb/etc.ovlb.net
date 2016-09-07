@@ -60,7 +60,7 @@ body {
 }
 
 .o-main-content {
-    transition: opacity .3s ease-out(0,.1,.2,1);
+    transition: opacity .3s cubic-bezier(0,.1,.2,1);
 
     &--hidden {
         opacity: 0;
