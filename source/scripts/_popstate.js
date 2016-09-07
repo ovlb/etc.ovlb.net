@@ -30,37 +30,72 @@ if ( contentEl.classList.contains(articleClass) ) {
   }, false);
 }
 
-var renderArticle = (data) => {
-  let newArticleHeaderEl = document.createElement('header');
-  newArticleHeaderEl.classList.add('o-article-header');
-  let newArticleMetaEl = document.createElement('p');
+/**
+ * Creates a new element, adds classes and appends it to a parent element or
+ * returns it for further reference
+ *
+ * @param {String} dEl The element to be created
+ * @param {String/Array} dClasses Classes that will be added, if it is an array
+ *                                loop through, if it is a string, just adds the
+ *                                class
+ * @param {Node} dParent Parent element that the newEl should be appended to. If
+ *                       it is false, return the element instead.
+ */
 
-  let articleType = data.article.type;
-  let articleDate = data.article.date;
-  let articleMeta = document.createTextNode(articleType + '—' + articleDate);
-  newArticleMetaEl.classList.add('c-card__meta', 'p--small');
-  newArticleMetaEl.appendChild(articleMeta);
-  newArticleHeaderEl.appendChild(newArticleMetaEl);
+var createEl = (dEl, dClasses, dContent, dParent) => {
+  var newEl = document.createElement(dEl);
 
-  let newArticleHeadingEl = document.createElement('h1');
-  newArticleHeadingEl.classList.add('c-main-headline');
-  let newArticleHeading = document.createTextNode(data.article.title);
-  newArticleHeadingEl.appendChild(newArticleHeading);
-  newArticleHeaderEl.appendChild(newArticleHeadingEl);
-
-  if(data.article.subtitle) {
-    let newArticleSubHeadingEl = document.createElement('h2');
-    newArticleSubHeadingEl.classList.add('c-sub-headline');
-    let newArticleSubHeading = document.createTextNode(data.article.subtitle);
-    newArticleSubHeadingEl.appendChild(newArticleSubHeading);
-    newArticleHeaderEl.appendChild(newArticleSubHeadingEl);
+  if ( Array.isArray(dClasses) ) {
+    for (var index = 0; index < dClasses.length; index++) {
+      var cssClass = dClasses[index];
+      newEl.classList.add(cssClass);
+    }
+  } else {
+    newEl.classList.add(dClasses);
   }
 
-  let newArticleContentEl = document.createElement('section');
-  newArticleContentEl.classList.add('o-article');
-  newArticleContentEl.innerHTML = data.text;
+  if( dContent ) {
+    newEl.appendChild( dContent );
+  }
+
+  if ( dParent ) {
+    dParent.appendChild(newEl);
+  } else {
+    return newEl;
+  }
+}
+
+var showContent = (dEl, dClass) => {
+  dEl.classList.remove(dClass);
+}
+
+var renderArticle = (data) => {
+  let newArticleHeaderEl = createEl('header', ['o-article-header', 'o-article-header--hidden'], false, false);
+
+  const articleType = data.article.type;
+  const articleDate = data.article.date;
+  let articleMeta = document.createTextNode(articleType + '—' + articleDate);
+
+  createEl('p', ['c-card__meta', 'p--small'], articleMeta, newArticleHeaderEl);
+
+  let newArticleHeading = document.createTextNode(data.article.title);
+  createEl('h1', 'c-main-headline', newArticleHeading, newArticleHeaderEl);
+
+  if( data.article.subtitle ) {
+    let newArticleSubHeading = document.createTextNode(data.article.subtitle);
+    createEl('h2', 'c-sub-headline', newArticleSubHeading, newArticleHeaderEl);
+  }
+
+  let newArticleContent = data.text;
+  let newArticleContentEl = createEl('section', ['o-article', 'o-article--hidden'], false, false);
+  newArticleContentEl.innerHTML = newArticleContent;
 
   contentEl.innerHTML = '';
   contentEl.appendChild(newArticleHeaderEl);
   contentEl.appendChild(newArticleContentEl);
+
+  setTimeout( () => {
+    showContent(newArticleHeaderEl, 'o-article-header--hidden');
+    showContent(newArticleContentEl, 'o-article--hidden');
+  }, 200);
 }
