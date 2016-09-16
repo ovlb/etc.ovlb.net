@@ -45,7 +45,7 @@ p, .p, .c-sub--headline, li, {
     }
 }
 
-.o-article h3 {
+.o-article__content h3 {
     margin: $spacer 0 .25*$spacer;
     text-align: center;
 }
@@ -64,7 +64,7 @@ p {
     }
 }
 
-.p--intro, .o-article p:first-of-type {
+.p--intro, .o-article__content p:first-of-type {
     font-family: $font--secondary;
     padding: $spacer .5*$spacer;
     text-indent: 0;
