@@ -18,6 +18,10 @@
         margin-left: $spacer;
     }
 
+    &:first-child {
+        margin-left: 0;
+    }
+
     &::before, &::after {
         background: $red;
         content: '';
@@ -38,7 +42,7 @@
     &::after {
         bottom: 0;
         height: 2px;
-        transform: scale(.25,.5);
+        transform: scale(.33,.5);
         transform-origin: right bottom;
     }
 
