@@ -47,10 +47,15 @@ router.get('/', (req, res, next) => {
     next();
   }, (err, files) => {
     if (err) throw err;
-    res.render('index', {
+    const locals = {
       title: 'Start',
       artikel: artikelMeta
-    });
+    }
+    if (req.query.js) {
+      res.send(locals)
+    } else {
+      res.render('index', locals);
+    }
   })
 });
 
@@ -83,9 +88,9 @@ router.get('/:artikel', (req, res, next) => {
 
     if (req.query.js) {
       res.send(locals);
+    } else {
+      res.render('article', locals);
     }
-
-    res.render('article', locals);
   })
   .catch(error => {
     console.log(error);
