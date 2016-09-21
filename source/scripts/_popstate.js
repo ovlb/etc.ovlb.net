@@ -1,22 +1,30 @@
 class CustomNavigator {
   constructor() {
     // Classes
-    this.indexClass = 'js-is-index';
-    this.articleClass = 'js-is-article';
+    this.indexClass = 'o-archive';
+    this.singleArticleClass = 'o-article';
+    this.indexJsHook = 'js-is-index';
+    this.articleJsHook = 'js-is-article';
 
     // Elements
     this.mainContentEl = document.querySelector('.js-main-content');
     this.articleHeaderEl = document.querySelector('.js-article-header');
     this.articleContentEl = document.querySelector('.js-article-content');
-
     this.articles = document.querySelectorAll('.js-article');
+
+    /**!!!!!!
+     *
+     *  Refine to only include links on page
+     *
+     !!!!! */
     this.links = document.querySelectorAll('a');
-    console.log(this.links);
 
     // Bind methods
     this.handleLinkClick = this.handleLinkClick.bind(this);
+    this.getState = this.getState.bind(this);
     this.createEl = this.createEl.bind(this);
     this.renderView = this.renderView.bind(this);
+    this.toggleClasses = this.toggleClasses.bind(this);
     this.renderArticle = this.renderArticle.bind(this);
 
     // Call common methods
@@ -24,16 +32,21 @@ class CustomNavigator {
   }
 
   addEventListeners() {
+    this.links = document.querySelectorAll('a');
+
     for ( var i = 0; i < this.links.length; i++ ) {
       const link = this.links[i];
-      link.addEventListener('click', (e) => {
-        this.handleLinkClick(e);
-      }, false)
+      link.addEventListener('click', this.handleLinkClick, false)
     }
 
-    window.addEventListener('popstate', (e) => {
-      console.log(e);
-    });
+    window.addEventListener('popstate', this.handleLinkClick, false);
+  }
+
+  removeEventListeners() {
+    for ( var i = 0; i < this.links.length; i++ ) {
+      const link = this.links[i];
+      link.removeEventListener('click', this.handleLinkClick);
+    }
   }
 
   /**
@@ -42,17 +55,29 @@ class CustomNavigator {
    * @param {Event} e -
    */
   handleLinkClick(e) {
+    if ( !('Promise' in window) ) {
+      return;
+    }
+    this.removeEventListeners();
     e.preventDefault();
-    const target = e.target;
+    let target;
+    if ( e.type === 'click' ) {
+      target = e.target;
+    } else if ( e.type === 'popstate' ) {
+      target = location.pathname.replace('/', '');
+    }
+
     // AJAX request to get the article data
-    get(target).then( (response) => {
+    get( target ).then( (response) => {
         const data = JSON.parse(response);
-        console.log(data);
-        history.pushState(data, null, target);
+        // Only push a state if the user clicked a link
+        if ( e.type === 'click' ) {
+          history.pushState(data, null, target);
+        }
         this.renderView(data);
         e.stopPropagation();
       }, (error) => {
-        console.log('Error: ' + response);
+        console.error('Error: ' + response);
       } );
   }
 
@@ -85,8 +110,6 @@ class CustomNavigator {
       newEl.appendChild( dContent );
     }
 
-    //return newEl;
-
     if ( dParent ) {
       dParent.appendChild(newEl);
     } else {
@@ -105,15 +128,21 @@ class CustomNavigator {
     this.mainContentEl.innerHTML = '';
 
     if ( data.title === 'Start' ) {
+      this.toggleClasses( 'index' );
       this.renderIndex( data );
+      this.addEventListeners();
     } else {
-      this.mainContentEl.classList.remove(this.indexClass);
-      this.mainContentEl.classList.remove('o-archive');
-      this.mainContentEl.classList.add(this.articleClass);
+      this.toggleClasses( 'article' );
       this.renderArticle( data );
+      this.addEventListeners();
     }
 
     document.title = data.title + ' | etc.ovlb';
+  }
+
+  getState() {
+    const mainClassList = this.mainContentEl.classList;
+    const stateIsIndex = mainClassList.contains(this.indexJsHook);
   }
 
   /**
@@ -133,6 +162,7 @@ class CustomNavigator {
       const date = article.date;
       const slug = article.slug;
 
+      // Create the Node
       const newCardEL = this.createEl('article', ['o-card', 'a--above__parent', 'js-article'], false, false);
       newCardEL.setAttribute('data-slug', slug);
 
@@ -162,8 +192,33 @@ class CustomNavigator {
     }
   }
 
+  /**
+   * Control classes to correctly display the content
+   */
   toggleClasses( site ) {
-    // TO DO now it is weekend
+    const mainClassList = this.mainContentEl.classList;
+    const stateIsIndex = mainClassList.contains(this.indexJsHook);
+    const stateIsArticle = mainClassList.contains(this.articleJsHook);
+
+    // Requested site is
+    if( site === 'index' && stateIsIndex) {
+      // No need to do anything
+      return;
+    } else if( site === 'index' && stateIsArticle) {
+      mainClassList.remove(this.articleJsHook);
+      mainClassList.remove(this.singleArticleClass);
+      mainClassList.add(this.indexJsHook);
+      mainClassList.add(this.indexClass);
+    }
+
+    if ( site === 'article' && stateIsArticle) {
+      return;
+    } else if( site === 'article' && stateIsIndex) {
+      mainClassList.remove(this.indexJsHook);
+      mainClassList.remove(this.indexClass);
+      mainClassList.add(this.articleJsHook);
+      mainClassList.add(this.singleArticleClass);
+    }
   }
 
   /**
@@ -173,7 +228,7 @@ class CustomNavigator {
    * area
    */
   renderArticle( data ) {
-    let newArticleHeaderEl = this.createEl('header', ['o-article-header', 'o-article-header--hidden'], false, false);
+    const newArticleHeaderEl = this.createEl('header', ['o-article-header', 'o-article-header--hidden'], false, false);
 
     const articleType = data.article.type;
     const articleDate = data.article.date;
@@ -193,16 +248,19 @@ class CustomNavigator {
     const newArticleContent = data.text;
     newArticleContentEl.innerHTML = newArticleContent;
 
-    this.mainContentEl.classList.add('o-article');
     this.mainContentEl.appendChild(newArticleHeaderEl);
     this.mainContentEl.appendChild(newArticleContentEl);
 
     setTimeout( () => {
       newArticleHeaderEl.classList.remove('o-article-header--hidden');
+    }, 180);
+    setTimeout( () => {
       newArticleContentEl.classList.remove('o-article__content--hidden');
-    }, 200);
+    }, 230);
   }
 }
 
-// Initiate
-new CustomNavigator();
+if ( 'history' in window ) {
+  // Initiate
+  new CustomNavigator();
+}
