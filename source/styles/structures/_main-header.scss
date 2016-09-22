@@ -6,7 +6,7 @@
     padding: .5*$spacer .75*$spacer;
     position: fixed;
     top: 0;
-    transition: box-shadow .2s cubic-bezier(0,.1,.3,1), max-height .1s cubic-bezier(0,0,.3,1);
+    transition: box-shadow .2s cubic-bezier(0,.1,.3,1);
     width: 100%;
     z-index: 100;
 
@@ -16,10 +16,5 @@
 
     &--scrolled {
         box-shadow: map-get($box-shadow, lvl2);
-        max-height: 2.5rem;
-
-        & .o-logo-etc {
-            transform: scale(.75) translate(-15%, -15%);
-        }
     }
 }
