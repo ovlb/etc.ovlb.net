@@ -7,6 +7,7 @@ var activateEventListeners = () => {
  * Controls the header on scroll
  */
 var controlHeader = () => {
+  console.log('scroll funtion');
   const cssClass = 'o-main-header--scrolled';
   var offsetToScroll = contentEl.offsetTop;
   var scrollOffsetY = window.pageYOffset ||
@@ -22,7 +23,7 @@ var controlHeader = () => {
 
 var debounceChangeHeader =  debounce(function(){
   controlHeader();
-}, 40);
+}, 10);
 
 (() => {
   activateEventListeners();
