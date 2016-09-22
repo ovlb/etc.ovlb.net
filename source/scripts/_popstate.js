@@ -126,6 +126,7 @@ class CustomNavigator {
     var content;
     // Reset content area
     this.mainContentEl.innerHTML = '';
+    this.mainContentEl.scrollTop = 0;
 
     if ( data.title === 'Start' ) {
       this.toggleClasses( 'index' );
