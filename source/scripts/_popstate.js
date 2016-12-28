@@ -19,8 +19,11 @@ class CustomNavigator {
      !!!!! */
     this.links = document.querySelectorAll('a');
 
+    this.lastScroll = 0;
+
     // Bind methods
     this.handleLinkClick = this.handleLinkClick.bind(this);
+    this.saveScrollPosition = this.saveScrollPosition.bind(this);
     this.getState = this.getState.bind(this);
     this.createEl = this.createEl.bind(this);
     this.renderView = this.renderView.bind(this);
@@ -60,6 +63,13 @@ class CustomNavigator {
     }
     this.removeEventListeners();
     e.preventDefault();
+
+    const isIndex = this.getState();
+
+    if(isIndex) {
+      this.saveScrollPosition();
+    }
+
     let target;
     if ( e.type === 'click' ) {
       target = e.target;
@@ -126,13 +136,14 @@ class CustomNavigator {
     var content;
     // Reset content area
     this.mainContentEl.innerHTML = '';
-    this.mainContentEl.scrollTop = 0;
 
     if ( data.title === 'Start' ) {
+      window.scrollTo(0,this.lastScroll);
       this.toggleClasses( 'index' );
       this.renderIndex( data );
       this.addEventListeners();
     } else {
+      window.scrollTo(0,0);
       this.toggleClasses( 'article' );
       this.renderArticle( data );
       this.addEventListeners();
@@ -141,9 +152,18 @@ class CustomNavigator {
     document.title = data.title + ' | etc.ovlb';
   }
 
+  saveScrollPosition() {
+    const offsetY = window.pageYOffset || document.documentElement.scrollTop;
+    this.lastScroll = offsetY;
+
+    return;
+  }
+
   getState() {
     const mainClassList = this.mainContentEl.classList;
     const stateIsIndex = mainClassList.contains(this.indexJsHook);
+
+    return stateIsIndex;
   }
 
   /**
