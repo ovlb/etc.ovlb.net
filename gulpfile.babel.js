@@ -131,6 +131,8 @@ gulp.task('nodemon', function (cb) {
   return $.nodemon({
     script: 'app.js',
     ignore: [
+      source + '/scripts/**/*.js',
+      source + '/styles/**/*.scss',
       'gulpfile.js',
       'node_modules/'
     ]
