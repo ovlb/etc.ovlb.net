@@ -1,12 +1,12 @@
 blockquote {
     border-left: $black-border--small;
-    margin: 2*$spacer 0;
-    padding-left: $spacer;
-    
+    margin: $spacer 0 2*$spacer;
+    padding: .5*$spacer 0 .5*$spacer $spacer;
+
     @media(min-width: breakpoint(medium)) {
-        padding: 0 2*$spacer;
+        padding: $spacer .5*$spacer $spacer 2*$spacer;
     }
-    
+
     & + p {
         text-indent: 0;
     }
@@ -17,7 +17,7 @@ blockquote {
     font-style: normal;
     letter-spacing: .35px;
     margin-top: $spacer;
-    
+
     & p {
         text-indent: 0;
     }
