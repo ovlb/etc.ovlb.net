@@ -20,6 +20,7 @@ p, .p, .c-sub--headline, li, {
 .c-main-headline {
     font-family: $font--main;
     font-size: ms(2, font-size(medium));
+    letter-spacing: .03em;
     margin-bottom: $spacer;
     margin-top: .5*$spacer;
 }
@@ -44,8 +45,20 @@ p, .p, .c-sub--headline, li, {
 .o-article__content h3 {
     letter-spacing: .03em;
     margin: $spacer 0 .25*$spacer;
-    text-transform: uppercase;
+    position: relative;
     word-spacing: .01em;
+
+    &::before {
+        background-color: $red;
+        content: "";
+        height: 2px;
+        right: calc(100% + .25em);
+        position: absolute;
+        top: 0em;
+        transform: rotate(22.5deg);
+        width: 24px;
+        z-index: -1;
+    }
 }
 
 h3 + p {
@@ -54,8 +67,8 @@ h3 + p {
 
 p {
     line-height: 1.4;
-    margin: 0 0 .125*$spacer;
-    text-indent: font-size(base);
+    margin: 0 0;
+    text-indent: font-size(medium);
 
     &:first-of-type {
         text-indent: 0;
