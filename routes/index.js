@@ -82,6 +82,7 @@ router.get('/:artikel', (req, res, next) => {
     var parsedMeta = JSON.parse(txt);
     const locals = {
       title: parsedMeta.title,
+      description: parsedMeta.abstract,
       article: parsedMeta,
       text: md.parse(textContent)
     };
