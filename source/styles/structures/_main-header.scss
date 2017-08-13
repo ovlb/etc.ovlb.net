@@ -1,9 +1,7 @@
 .o-main-header {
     background: $background;
     border-bottom: 1px solid rgba($main, .2);
-    height: 3rem;
-    margin-bottom: $spacer;
-    padding: .5*$spacer .75*$spacer;
+    padding: 2vmin 4vmin;
     position: fixed;
     top: 0;
     transition: box-shadow .2s cubic-bezier(0,.1,.3,1);

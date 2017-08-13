@@ -1,6 +1,6 @@
 doctype html
 html(lang="de")
-  - var ogTitle = title + ' | etc.ovlb';
+  - var ogDesc = (description) ? description : 'random ramblings';
   head
     title #{title} | etc.ovlb
 
@@ -9,9 +9,9 @@ html(lang="de")
     meta(name="description" content="random ramblings")
     meta(name="viewport" content="width=device-width, initial-scale=1")
 
-    meta(property="og:title" content=ogTitle)
+    meta(property="og:title" content=title)
     meta(property="og:type" content="website")
-    meta(property="og:description" content="random ramblings")
+    meta(property="og:description" content=ogDesc)
     meta(property="og:image" content="https://etc.ovlb.net/img/etc-og-1.png")
     meta(property="og:site_name" content="etc.ovlb")
 

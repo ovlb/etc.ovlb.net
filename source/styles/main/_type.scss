@@ -3,7 +3,6 @@
 */
 h1, h2, h3, h4, h5, h6 {
     font-size: 1.25rem;
-    letter-spacing: .1rem;
 }
 
 /*
@@ -21,14 +20,12 @@ p, .p, .c-sub--headline, li, {
 .c-main-headline {
     font-family: $font--main;
     font-size: ms(2, font-size(medium));
-    letter-spacing: .1rem;
+    letter-spacing: .03em;
     margin-bottom: $spacer;
     margin-top: .5*$spacer;
-    word-spacing: .1rem;
 }
 
 .c-sub-headline {
-    letter-spacing: 1px;
     margin: 0 0 $spacer 0;
     word-spacing: 1px;
 
@@ -46,8 +43,22 @@ p, .p, .c-sub--headline, li, {
 }
 
 .o-article__content h3 {
+    letter-spacing: .03em;
     margin: $spacer 0 .25*$spacer;
-    text-align: center;
+    position: relative;
+    word-spacing: .01em;
+
+    &::before {
+        background-color: $red;
+        content: "";
+        height: 2px;
+        right: calc(100% + .25em);
+        position: absolute;
+        top: 0em;
+        transform: rotate(22.5deg);
+        width: 24px;
+        z-index: -1;
+    }
 }
 
 h3 + p {
@@ -56,15 +67,15 @@ h3 + p {
 
 p {
     line-height: 1.4;
-    margin: 0 0 .125*$spacer;
-    text-indent: font-size(base);
+    margin: 0 0;
+    text-indent: font-size(medium);
 
     &:first-of-type {
         text-indent: 0;
     }
 }
 
-.p--intro, .o-article__content p:first-of-type {
+.p--intro, .o-article__content > p:first-of-type {
     font-family: $font--secondary;
     padding: $spacer .5*$spacer;
     text-indent: 0;
@@ -100,34 +111,10 @@ p {
 
 a[href]:not([class]) {
     color: $red;
-    position: relative;
     text-decoration: underline;
-    transition: color .2s;
-
-    &::after {
-        background-color: $red;
-        border-radius: 2px;
-        content: "";
-        bottom: 0;
-        height: 100%;
-        left: -.15rem;
-        opacity: 0;
-        position: absolute;
-        right: -.15rem;
-        transform: scale(.8,0);
-        transform-origin: center bottom;
-        transition: opacity .2s, transform .2s;
-        z-index: -1;
-    }
 
     &:hover, &:active, &:focus {
-        color: $background;
         text-decoration: none;
-
-        &::after {
-            opacity: 1;
-            transform: scale(1,1);
-        }
     }
 }
 
