@@ -50,7 +50,7 @@ Paywalls sind schon deswegen keine Alternative, weil sie eines der gängigsten M
 
 Es ist ein wunderlicher Ansatz, Leute an den Rand der Oase zu locken, um sie dann wieder in die Wüste zu schicken. Wenn der Weg zur Oase über Google oder Facebook führt, was mittlerweile über die ganze Medienlandschaft verteilt die beiden häufigsten Wege sind, schneidet man sich damit höchstens wieder ins eigene Fleisch.
 
-Hohe Bounce-Rates führen zu niedrigen Werbeeinahmen, schlechterer Platzierung der noch so schön geschriebenen Hinweisschilder am Wegesrand und damit letztendlich wieder zu Frustration. Ich und die Millionen anderer User*innen von Ad-Block-Software kriegen von dieser Verzweiflung nichts mehr mit wir sind längst woanders.
+Hohe Bounce-Rates führen zu niedrigen Werbeeinahmen, schlechterer Platzierung der noch so schön geschriebenen Hinweisschilder am Wegesrand und damit letztendlich wieder zu Frustration. Ich und die Millionen anderer User*innen von Ad-Block-Software kriegen von dieser Verzweiflung nichts mehr mit, wir sind längst woanders.
 
 Es ist möglich, Werbung zu schalten, die die Bedürfnisse der User\*innen respektiert. [Forschung dazu](https://www.nngroup.com/articles/user-requirements-online-ads/ "Five User Requirements for Online Ads – Therese Fendersen") kommt zum Beispiel von der [Nielsen Norman Group](https://www.nngroup.com/ "Homepage der Nielsen Norman Group"). Im [Ad-Block-Report 2017](https://pagefair.com/blog/2017/adblockreport/) (Slide 14) geben 77% der Ad-Block-User\*innen an, bestimmte Formate für tolerabel zu halten. Die genannten Formate decken sich weitestgehend mit den Ergebnissen der Nielsen Norman Group.
 
@@ -70,4 +70,4 @@ Neue Vermarktungsmodelle zu finden, das verlorene Vertrauen in gefahrlose und zu
 
 ### Schlussbemerkung
 
-Die Betrachtungen müssen notwendig fragmentarisch sein, sie sind mein momentaner Stand des Wissen, auch eine Bitte um Diskussion. Man erreicht mich bei [Twitter](https://twitter.com/_ovlb) oder per [Mail](mailto:o@ovlb.net).
+Die Betrachtungen müssen notwendig fragmentarisch sein, sie sind mein momentaner Stand des Wissens, auch eine Bitte um Diskussion. Man erreicht mich bei [Twitter](https://twitter.com/_ovlb) oder per [Mail](mailto:o@ovlb.net).
