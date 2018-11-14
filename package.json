@@ -59,7 +59,7 @@
     "gulp-rev": "^7.1.2",
     "gulp-rev-collector": "^1.0.5",
     "markdown": "^0.5.0",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "node-dir": "^0.1.16",
     "pug": "^2.0.0-alpha6",
     "serve-favicon": "^2.4.5"
